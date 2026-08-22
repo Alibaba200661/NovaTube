@@ -14,192 +14,118 @@
 }
 
 body {
+    background: #0f0f0f;
+    color: white;
     font-family: Arial, sans-serif;
-    background: #f7f7f7;
-    color: #111;
+    padding-bottom: 75px;
 }
 
-/* HEADER */
+/* ВЕРХНЯЯ ПАНЕЛЬ */
 
-header {
-    height: 70px;
-    background: white;
-    border-bottom: 1px solid #ddd;
+.header {
+    height: 68px;
     display: flex;
     align-items: center;
-    gap: 25px;
-    padding: 0 25px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    padding: 0 18px;
+    gap: 18px;
 }
 
 .logo {
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 800;
     white-space: nowrap;
+}
+
+.logo-icon {
+    color: #ff1744;
 }
 
 .logo span {
     color: #ff1744;
 }
 
-.search {
-    display: flex;
+.header-spacer {
     flex: 1;
-    max-width: 650px;
-    margin: auto;
 }
 
-.search input {
-    width: 100%;
-    height: 42px;
-    border: 1px solid #ccc;
-    border-right: none;
-    border-radius: 22px 0 0 22px;
-    padding: 0 18px;
-    font-size: 15px;
-    outline: none;
-}
-
-.search button {
-    width: 55px;
-    border: none;
-    background: #ff1744;
+.header-button {
+    border: 0;
+    background: transparent;
     color: white;
-    border-radius: 0 22px 22px 0;
+    font-size: 27px;
     cursor: pointer;
-    font-size: 18px;
 }
 
-.login {
-    border: 1px solid #ff1744;
-    background: white;
-    color: #ff1744;
-    border-radius: 20px;
-    padding: 10px 18px;
-}
+/* КАТЕГОРИИ */
 
-/* MENU */
-
-.menu {
+.categories {
     display: flex;
     gap: 10px;
-    padding: 20px 25px;
     overflow-x: auto;
+    padding: 8px 15px 15px;
 }
 
-.menu button {
-    border: none;
-    background: white;
+.categories::-webkit-scrollbar {
+    display: none;
+}
+
+.category {
+    background: #272727;
+    color: white;
+    border: 0;
+    border-radius: 9px;
     padding: 10px 18px;
-    border-radius: 20px;
-    cursor: pointer;
+    font-size: 16px;
     white-space: nowrap;
 }
 
-.menu .active {
-    background: #111;
-    color: white;
+.category.active {
+    background: white;
+    color: #111;
 }
 
-/* CONTENT */
+/* ОСНОВА */
 
-main {
-    max-width: 1400px;
-    margin: auto;
-    padding: 0 25px 40px;
-}
-
-h2 {
-    margin: 15px 0 20px;
-}
-
-/* VIDEOS */
-
-.videos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 25px;
-}
-
-.video {
-    cursor: pointer;
-}
-
-.thumbnail {
+.content {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    background: linear-gradient(135deg, #222, #777);
-}
-
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.play {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background: rgba(0,0,0,.75);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    opacity: 0;
-    transition: .2s;
-}
-
-.video:hover .play {
-    opacity: 1;
-}
-
-.info {
-    padding-top: 10px;
-}
-
-.title {
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1.3;
-}
-
-.channel {
-    color: #666;
-    margin-top: 7px;
-    font-size: 14px;
-}
-
-.stats {
-    color: #888;
-    margin-top: 4px;
-    font-size: 13px;
 }
 
 /* SHORTS */
 
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 18px 12px;
+}
+
+.section-title h2 {
+    font-size: 22px;
+}
+
+.more {
+    font-size: 25px;
+}
+
 .shorts {
     display: flex;
-    gap: 18px;
+    gap: 12px;
     overflow-x: auto;
+    padding: 0 15px 20px;
+}
+
+.shorts::-webkit-scrollbar {
+    display: none;
 }
 
 .short {
-    min-width: 190px;
-    height: 330px;
-    border-radius: 14px;
+    min-width: 175px;
+    max-width: 175px;
+    height: 295px;
+    border-radius: 11px;
     overflow: hidden;
     position: relative;
+    background: #222;
     cursor: pointer;
 }
 
@@ -209,32 +135,152 @@ h2 {
     object-fit: cover;
 }
 
-.short-info {
+.short::after {
+    content: "";
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 15px;
-    color: white;
-    background: linear-gradient(transparent, rgba(0,0,0,.9));
+    inset: 45% 0 0;
+    background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.85)
+    );
 }
 
-.short-title {
+.short-text {
+    position: absolute;
+    z-index: 2;
+    bottom: 12px;
+    left: 10px;
+    right: 10px;
+    font-size: 16px;
     font-weight: bold;
 }
 
-/* VIDEO PAGE */
+/* РЕКОМЕНДАЦИИ */
 
-#videoPage {
+.recommendations {
+    padding-top: 5px;
+}
+
+.video {
+    width: 100%;
+    margin-bottom: 28px;
+    cursor: pointer;
+}
+
+/* ПРЕВЬЮ */
+
+.thumbnail {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    background: #222;
+    overflow: hidden;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ДЛИТЕЛЬНОСТЬ */
+
+.duration {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    background: rgba(0,0,0,.85);
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+/* ИНФОРМАЦИЯ */
+
+.video-info {
+    display: flex;
+    padding: 10px 13px 0;
+    gap: 11px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.video-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.video-title {
+    font-size: 17px;
+    line-height: 1.25;
+    font-weight: 600;
+}
+
+.channel {
+    color: #aaa;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.stats {
+    color: #888;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.video-menu {
+    font-size: 23px;
+    color: #ddd;
+}
+
+/* ПОИСК */
+
+.search-page {
+    display: none;
+    padding: 15px;
+}
+
+.search-box {
+    display: flex;
+    gap: 8px;
+}
+
+.search-box input {
+    flex: 1;
+    background: #252525;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 22px;
+    padding: 12px 17px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-box button {
+    background: #ff1744;
+    border: 0;
+    color: white;
+    width: 48px;
+    border-radius: 50%;
+    font-size: 19px;
+}
+
+/* СТРАНИЦА ВИДЕО */
+
+.video-page {
     display: none;
 }
 
 .player {
     width: 100%;
-    max-width: 950px;
     aspect-ratio: 16 / 9;
-    background: #111;
-    border-radius: 12px;
-    overflow: hidden;
+    background: black;
 }
 
 .player video {
@@ -242,80 +288,98 @@ h2 {
     height: 100%;
 }
 
-.back {
-    margin-bottom: 15px;
-    border: none;
-    background: white;
-    padding: 10px 16px;
-    border-radius: 20px;
-    cursor: pointer;
+.video-page-info {
+    padding: 15px;
 }
 
-.video-title {
-    font-size: 24px;
-    margin-top: 18px;
+.video-page-title {
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.3;
 }
 
-.video-channel {
+.video-page-channel {
+    color: #aaa;
     margin-top: 10px;
-    color: #666;
 }
 
-.actions {
+.video-actions {
+    display: flex;
+    gap: 10px;
     margin-top: 15px;
 }
 
-.actions button {
-    border: none;
-    background: #eee;
+.video-actions button {
+    background: #272727;
+    color: white;
+    border: 0;
+    border-radius: 22px;
     padding: 10px 16px;
-    border-radius: 20px;
-    margin-right: 8px;
-    cursor: pointer;
 }
 
-/* MOBILE */
+/* НИЖНЕЕ МЕНЮ */
 
-@media(max-width:700px) {
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 68px;
+    background: #0f0f0f;
+    border-top: 1px solid #292929;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 20;
+}
 
-    header {
-        padding: 0 12px;
-        gap: 10px;
-    }
+.nav-item {
+    color: #ddd;
+    text-align: center;
+    font-size: 12px;
+}
 
-    .logo {
-        font-size: 20px;
-    }
+.nav-icon {
+    display: block;
+    font-size: 23px;
+    margin-bottom: 3px;
+}
 
-    .login {
-        display: none;
-    }
+.add-button {
+    width: 48px;
+    height: 40px;
+    border-radius: 20px;
+    background: #272727;
+    color: white;
+    border: 0;
+    font-size: 27px;
+}
 
-    main {
-        padding: 0 12px 30px;
-    }
+/* ПК */
 
-    .menu {
-        padding: 15px 12px;
-    }
+@media (min-width: 800px) {
 
-    .videos {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .title {
-        font-size: 14px;
-    }
-
-    .channel,
-    .stats {
-        font-size: 12px;
+    .content {
+        max-width: 1100px;
+        margin: auto;
     }
 
     .short {
-        min-width: 155px;
-        height: 280px;
+        min-width: 190px;
+        max-width: 190px;
+    }
+
+    .video {
+        max-width: 850px;
+        margin: 0 auto 35px;
+    }
+
+    .bottom-nav {
+        display: none;
+    }
+
+    body {
+        padding-bottom: 0;
     }
 }
 </style>
@@ -323,239 +387,332 @@ h2 {
 
 <body>
 
-<header>
+<!-- ВЕРХ -->
+
+<header class="header">
 
     <div class="logo">
-        ▶ <span>Nova</span>Tube
+        <span class="logo-icon">▶</span> Nova<span>Tube</span>
     </div>
 
-    <div class="search">
-        <input
-            id="searchInput"
-            type="text"
-            placeholder="Поиск видео и каналов..."
-            oninput="searchVideos()"
-        >
-        <button>🔎</button>
-    </div>
+    <div class="header-spacer"></div>
 
-    <button class="login">Войти</button>
+    <button class="header-button" onclick="showSearch()">⌕</button>
+
+    <button class="header-button">🔔</button>
 
 </header>
 
 
-<!-- ГЛАВНАЯ -->
+<!-- КАТЕГОРИИ -->
 
-<div id="homePage">
+<div class="categories">
 
-    <div class="menu">
-        <button class="active">🏠 Главная</button>
-        <button>🔥 Популярное</button>
-        <button>📱 Shorts</button>
-        <button>🎮 Игры</button>
-        <button>🎵 Музыка</button>
-    </div>
-
-    <main>
-
-        <h2>⭐ Рекомендации</h2>
-
-        <div class="videos" id="videos">
-
-            <div
-                class="video"
-                data-title="Minecraft выживание"
-                onclick="openVideo('Minecraft — новое выживание!')"
-            >
-
-                <div class="thumbnail">
-                    <img src="https://picsum.photos/seed/minecraft/800/450">
-                    <div class="play">▶</div>
-                </div>
-
-                <div class="info">
-                    <div class="title">
-                        Minecraft — новое выживание!
-                    </div>
-
-                    <div class="channel">
-                        @GameMaster
-                    </div>
-
-                    <div class="stats">
-                        8,5 тыс. просмотров • 5 часов назад
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div
-                class="video"
-                data-title="Смешной момент"
-                onclick="openVideo('Самый смешной момент 😂')"
-            >
-
-                <div class="thumbnail">
-                    <img src="https://picsum.photos/seed/funny/800/450">
-                    <div class="play">▶</div>
-                </div>
-
-                <div class="info">
-                    <div class="title">
-                        Самый смешной момент 😂
-                    </div>
-
-                    <div class="channel">
-                        @FunnyWorld
-                    </div>
-
-                    <div class="stats">
-                        24 тыс. просмотров • 1 день назад
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div
-                class="video"
-                data-title="Невероятный эксперимент"
-                onclick="openVideo('Невероятный эксперимент!')"
-            >
-
-                <div class="thumbnail">
-                    <img src="https://picsum.photos/seed/experiment/800/450">
-                    <div class="play">▶</div>
-                </div>
-
-                <div class="info">
-                    <div class="title">
-                        Невероятный эксперимент!
-                    </div>
-
-                    <div class="channel">
-                        @NovaCreator
-                    </div>
-
-                    <div class="stats">
-                        12 тыс. просмотров • 2 дня назад
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div
-                class="video"
-                data-title="Игровой челлендж"
-                onclick="openVideo('Игровой челлендж!')"
-            >
-
-                <div class="thumbnail">
-                    <img src="https://picsum.photos/seed/gaming/800/450">
-                    <div class="play">▶</div>
-                </div>
-
-                <div class="info">
-                    <div class="title">
-                        Игровой челлендж!
-                    </div>
-
-                    <div class="channel">
-                        @ProGamer
-                    </div>
-
-                    <div class="stats">
-                        31 тыс. просмотров • 3 дня назад
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <h2 style="margin-top:45px;">
-            📱 Shorts
-        </h2>
-
-        <div class="shorts">
-
-            <div class="short">
-                <img src="https://picsum.photos/seed/short1/400/700">
-
-                <div class="short-info">
-                    <div class="short-title">
-                        Когда выиграл 1v1 😎
-                    </div>
-                    @ProGamer
-                </div>
-            </div>
-
-            <div class="short">
-                <img src="https://picsum.photos/seed/short2/400/700">
-
-                <div class="short-info">
-                    <div class="short-title">
-                        Этот момент 😂
-                    </div>
-                    @FunnyWorld
-                </div>
-            </div>
-
-            <div class="short">
-                <img src="https://picsum.photos/seed/short3/400/700">
-
-                <div class="short-info">
-                    <div class="short-title">
-                        Minecraft секрет!
-                    </div>
-                    @GameMaster
-                </div>
-            </div>
-
-        </div>
-
-    </main>
+    <button class="category active">Все</button>
+    <button class="category">Видеоигры</button>
+    <button class="category">Музыка</button>
+    <button class="category">Мемы</button>
+    <button class="category">Minecraft</button>
+    <button class="category">Brawl Stars</button>
 
 </div>
 
 
-<!-- СТРАНИЦА ВИДЕО -->
+<!-- ГЛАВНАЯ -->
 
-<div id="videoPage">
+<div id="homePage" class="content">
 
-    <main>
+    <!-- SHORTS -->
 
-        <button class="back" onclick="goHome()">
-            ← Назад
-        </button>
+    <section>
 
-        <div class="player">
+        <div class="section-title">
+            <h2>▶ Shorts</h2>
+            <div class="more">⋮</div>
+        </div>
 
-            <video controls>
-                <source src="" type="video/mp4">
-            </video>
+        <div class="shorts">
+
+            <div class="short" onclick="openVideo('Top 5 игровых мемов')">
+                <img src="https://picsum.photos/seed/brawl1/400/700">
+                <div class="short-text">
+                    Top 5 игровых мемов 😂
+                </div>
+            </div>
+
+            <div class="short" onclick="openVideo('Кто это сделал?')">
+                <img src="https://picsum.photos/seed/brawl2/400/700">
+                <div class="short-text">
+                    Кто это сделал? 😭
+                </div>
+            </div>
+
+            <div class="short" onclick="openVideo('Minecraft момент')">
+                <img src="https://picsum.photos/seed/minecraftshort/400/700">
+                <div class="short-text">
+                    Minecraft момент 😎
+                </div>
+            </div>
 
         </div>
 
-        <h1 class="video-title" id="videoTitle">
-            Видео
-        </h1>
+    </section>
 
-        <div class="video-channel">
+
+    <!-- РЕКОМЕНДАЦИИ -->
+
+    <section class="recommendations">
+
+        <div class="section-title">
+            <h2>Рекомендации</h2>
+            <div class="more">⋮</div>
+        </div>
+
+
+        <!-- ВИДЕО 1 -->
+
+        <div class="video"
+             onclick="openVideo('Infinite gadget, infinite chaos')">
+
+            <div class="thumbnail">
+
+                <img src="https://picsum.photos/seed/gadget/1000/562">
+
+                <div class="duration">
+                    5:31
+                </div>
+
+            </div>
+
+            <div class="video-info">
+
+                <img
+                    class="avatar"
+                    src="https://i.pravatar.cc/100?img=12"
+                >
+
+                <div class="video-text">
+
+                    <div class="video-title">
+                        Infinite gadget, infinite chaos
+                    </div>
+
+                    <div class="channel">
+                        Nova Gaming
+                    </div>
+
+                    <div class="stats">
+                        15 тыс. просмотров • 2 дня назад
+                    </div>
+
+                </div>
+
+                <div class="video-menu">
+                    ⋮
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ВИДЕО 2 -->
+
+        <div class="video"
+             onclick="openVideo('Самый безумный момент в игре')">
+
+            <div class="thumbnail">
+
+                <img
+                    src="https://picsum.photos/seed/gameplay/1000/562"
+                >
+
+                <div class="duration">
+                    8:42
+                </div>
+
+            </div>
+
+            <div class="video-info">
+
+                <img
+                    class="avatar"
+                    src="https://i.pravatar.cc/100?img=33"
+                >
+
+                <div class="video-text">
+
+                    <div class="video-title">
+                        Самый безумный момент в игре 😱
+                    </div>
+
+                    <div class="channel">
+                        GameWorld
+                    </div>
+
+                    <div class="stats">
+                        32 тыс. просмотров • 1 день назад
+                    </div>
+
+                </div>
+
+                <div class="video-menu">
+                    ⋮
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ВИДЕО 3 -->
+
+        <div class="video"
+             onclick="openVideo('Minecraft — я не ожидал этого')">
+
+            <div class="thumbnail">
+
+                <img
+                    src="https://picsum.photos/seed/minecraftvideo/1000/562"
+                >
+
+                <div class="duration">
+                    12:17
+                </div>
+
+            </div>
+
+            <div class="video-info">
+
+                <img
+                    class="avatar"
+                    src="https://i.pravatar.cc/100?img=51"
+                >
+
+                <div class="video-text">
+
+                    <div class="video-title">
+                        Minecraft — я вообще не ожидал этого...
+                    </div>
+
+                    <div class="channel">
+                        Minecraft Pro
+                    </div>
+
+                    <div class="stats">
+                        84 тыс. просмотров • 3 дня назад
+                    </div>
+
+                </div>
+
+                <div class="video-menu">
+                    ⋮
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- ПОИСК -->
+
+<div id="searchPage" class="search-page">
+
+    <div class="search-box">
+
+        <input
+            id="searchInput"
+            placeholder="Поиск видео и каналов..."
+            oninput="searchVideos()"
+        >
+
+        <button onclick="hideSearch()">✕</button>
+
+    </div>
+
+    <h2 style="margin-top:25px;">
+        Результаты поиска
+    </h2>
+
+    <p id="searchResult">
+        Начни вводить запрос.
+    </p>
+
+</div>
+
+
+<!-- СТРАНИЦА ПРОСМОТРА -->
+
+<div id="videoPage" class="video-page">
+
+    <div class="player">
+
+        <video controls>
+            <source src="" type="video/mp4">
+        </video>
+
+    </div>
+
+    <div class="video-page-info">
+
+        <div
+            class="video-page-title"
+            id="videoTitle"
+        >
+            Название видео
+        </div>
+
+        <div class="video-page-channel">
             @NovaCreator
         </div>
 
-        <div class="actions">
+        <div class="stats">
+            15 тыс. просмотров
+        </div>
+
+        <div class="video-actions">
             <button>👍 Нравится</button>
             <button>↗ Поделиться</button>
         </div>
 
-    </main>
+    </div>
 
 </div>
+
+
+<!-- НИЖНЯЯ НАВИГАЦИЯ -->
+
+<nav class="bottom-nav">
+
+    <div class="nav-item" onclick="goHome()">
+        <span class="nav-icon">⌂</span>
+        Главная
+    </div>
+
+    <div class="nav-item">
+        <span class="nav-icon">▶</span>
+        Shorts
+    </div>
+
+    <button class="add-button">
+        +
+    </button>
+
+    <div class="nav-item">
+        <span class="nav-icon">▣</span>
+        Подписки
+    </div>
+
+    <div class="nav-item">
+        <span class="nav-icon">●</span>
+        Вы
+    </div>
+
+</nav>
 
 
 <script>
@@ -563,7 +720,7 @@ h2 {
 function openVideo(title) {
 
     document.getElementById("homePage").style.display = "none";
-
+    document.getElementById("searchPage").style.display = "none";
     document.getElementById("videoPage").style.display = "block";
 
     document.getElementById("videoTitle").textContent = title;
@@ -575,39 +732,56 @@ function openVideo(title) {
 function goHome() {
 
     document.getElementById("videoPage").style.display = "none";
-
+    document.getElementById("searchPage").style.display = "none";
     document.getElementById("homePage").style.display = "block";
 
     window.scrollTo(0, 0);
 }
 
 
+function showSearch() {
+
+    document.getElementById("homePage").style.display = "none";
+    document.getElementById("videoPage").style.display = "none";
+    document.getElementById("searchPage").style.display = "block";
+
+    document.getElementById("searchInput").focus();
+
+}
+
+
+function hideSearch() {
+
+    goHome();
+
+}
+
+
 function searchVideos() {
 
-    const query =
+    const text =
         document
         .getElementById("searchInput")
         .value
         .toLowerCase();
 
-    const videos =
-        document.querySelectorAll(".video");
+    const result =
+        document.getElementById("searchResult");
 
-    videos.forEach(video => {
+    if (text === "") {
 
-        const title =
-            video.dataset.title.toLowerCase();
+        result.textContent =
+            "Начни вводить запрос.";
 
-        if (title.includes(query)) {
-            video.style.display = "";
-        } else {
-            video.style.display = "none";
-        }
+        return;
+    }
 
-    });
+    result.textContent =
+        "Поиск: " + text;
+
 }
 
 </script>
 
 </body>
-                    </html>
+</html>
